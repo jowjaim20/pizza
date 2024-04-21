@@ -1,22 +1,17 @@
 import Colors from "@/constants/Colors";
+import { Product } from "@/types";
 import { FunctionComponent } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-interface ProductListItemProps {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-}
-
-const ProductListItem: FunctionComponent<ProductListItemProps> = (props) => {
+const ProductListItem: FunctionComponent<Product> = (props) => {
   const { image, name, price } = props;
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{
-          uri: image
+          uri: image || ""
         }}
       />
       <Text style={styles.title}>{name}</Text>
