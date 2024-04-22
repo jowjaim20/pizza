@@ -1,14 +1,8 @@
-import { ScrollView } from "react-native";
+import { Redirect } from "expo-router";
+import React from "react";
 
-import products from "@/assets/data/products";
-import ProductListItem from "@/components/ProductListItem";
+const TabIndex = () => {
+  return <Redirect href={"/menu/"} />;
+};
 
-export default function TabOneScreen() {
-  return (
-    <ScrollView>
-      {products.map((item) => (
-        <ProductListItem key={item.id} {...item} />
-      ))}
-    </ScrollView>
-  );
-}
+export default TabIndex;

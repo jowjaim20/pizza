@@ -1,30 +1,36 @@
 import Colors from "@/constants/Colors";
 import { Product } from "@/types";
+import { Link } from "expo-router";
 import { FunctionComponent } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 const ProductListItem: FunctionComponent<Product> = (props) => {
-  const { image, name, price } = props;
+  const { id, image, name, price } = props;
 
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={{
-          uri: image || ""
-        }}
-      />
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.price}>${price}</Text>
-    </View>
+    <Link href={`/menu/${id}`} asChild>
+      <Pressable style={styles.container}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: image || ""
+          }}
+          resizeMode="contain"
+        />
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.price}>${price}</Text>
+      </Pressable>
+    </Link>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "white",
     padding: 10,
-    borderRadius: 20
+    borderRadius: 20,
+    maxWidth: "50%"
   },
   title: {
     fontSize: 20,
